@@ -48,6 +48,8 @@ export class ChatWindowComponent {
   }
 
   sendMessage(): void {
+    // prevent sending an empty message
+    if (this.draftMessage.text.trim() === '') { return; }
     this.store.dispatch(ThreadActions.addMessage(
       this.currentThread,
       {
